@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold and Eric Roberts">
-  <title>Title</title>
+  <title>Section 4 - Wordle</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -36,7 +36,7 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Title</h1>
+  <h1 class="title">Section 4 - Wordle</h1>
   <p class="author">Jed Rembold and Eric Roberts</p>
   <p class="date">Date</p>
 </section>
@@ -44,8 +44,75 @@
 <section id="problem-1" class="slide level2">
 <h2>Problem 1</h2>
 <ul>
-<li>Is here!</li>
+<li>Everyone has experienced the drama of being forced to generate a new
+password with certain characteristics</li>
+<li>Here, your goal is to make use of the random library to generate a
+password of an arbitrary length and using a selection of characters</li>
+<li>Write a function
+<code class="python">generate_password(length, chars)</code> which takes
+two arguments:
+<ul>
+<li>The length of the desired password as an integer</li>
+<li>The string of possible characters to generate the password from</li>
+</ul></li>
+<li>Your function should <em>return</em> the final password as a
+string</li>
 </ul>
+</section>
+<section id="problem-2" class="slide level2">
+<h2>Problem 2</h2>
+<ul>
+<li>Interacting with the <code class="python">WordleGWindow</code>
+object is mandatory in the Wordle project as a means to control or get
+information from the graphical window</li>
+<li>Displaying or reading information from the graphical squares
+generally requires referencing an index for both the column and row</li>
+</ul>
+</section>
+<section id="turn-that-frown" class="slide level2">
+<h2>Turn that frown…</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>For the first part of this problem, add code to the existing
+template so that when the program is immediately run, the Wordle squares
+form a frowing face as shown to the right</li>
+<li>For the square color, you can just use the string
+<code class="python">"black"</code> (or choose any other fun
+color!)</li>
+</ul>
+</div>
+<div class="col">
+<figure>
+<img data-src="./images/wordle_sad.png" alt="Sad Wordle" />
+<figcaption aria-hidden="true">Sad Wordle</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="upside-down" class="slide level2">
+<h2>Upside Down!</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>Now add code to the <code class="python">enter_action()</code>
+function so that, then the <code class="python">Enter</code> or
+<code class="python">Return</code> key is pressed, the sad face turns
+into a smiley face</li>
+<li>You don’t need to change <strong>ALL</strong> of the squares here,
+so just change the ones that you need to</li>
+</ul>
+</div>
+<div class="col">
+<figure>
+<img data-src="./images/wordle_happy.png" alt="Happy Wordle!" />
+<figcaption aria-hidden="true">Happy Wordle!</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="problem-3-coloring" class="slide level2">
+<h2>Problem 3: Coloring</h2>
 </section>
     </div>
   </div>
