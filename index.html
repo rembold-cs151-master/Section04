@@ -38,7 +38,7 @@
 <section id="title-slide">
   <h1 class="title">Section 4 - Wordle</h1>
   <p class="author">Jed Rembold and Eric Roberts</p>
-  <p class="date">Date</p>
+  <p class="date">Week of September 25</p>
 </section>
 
 <section id="problem-1" class="slide level2">
@@ -59,8 +59,563 @@ two arguments:
 string</li>
 </ul>
 </section>
-<section id="problem-2" class="slide level2">
-<h2>Problem 2</h2>
+<section id="the-string-library" class="slide level2">
+<h2>The String Library</h2>
+<ul>
+<li><p>If you want an easy way to generate string of different groups,
+Python’s <code class="python">string</code> library can be
+useful</p></li>
+<li><p>It exports several useful constant strings that you can use:</p>
+<ul>
+<li><code class="python">ascii_letters</code>: All the lowercase and
+capital english letters</li>
+<li><code class="python">digits</code>: All the numeric digits</li>
+<li><code class="python">punctuation</code>: All the punctuation
+symbols</li>
+</ul></li>
+<li><p>You can thus produce a simple password:</p>
+<pre ><code class="python">generate_password(5, string.ascii_letters)</code></pre></li>
+<li><p>Or a difficult password:</p>
+<pre ><code class="python">generate_password(15, string.ascii_letters + string.digits + string.punctuation)</code></pre></li>
+</ul>
+</section>
+<section id="password-key" class="slide level2">
+<h2>Password Key</h2>
+<pre ><code class="python" style="max-height:900px">import random
+
+def generate_password(length, characters):
+  password = ""
+  for i in range(length):
+    password += random.choice(characters)
+  return password
+
+if __name__ == '__main__':
+  import string
+
+  chars = string.ascii_letters
+  print(f"Simple password:  {generate_password(5, chars)}")
+  chars += string.digits
+  print(f"Medium password:  {generate_password(10, chars)}")
+  chars += string.punctuation
+  print(f"Complex password: {generate_password(15, chars)}")</code></pre>
+</section>
+<section id="problem-2-coloring" class="slide level2">
+<h2>Problem 2: Coloring</h2>
+<ul>
+<li>The most difficult part of the Wordle project is Milestone #3, in
+which you decide what color to apply to each of the squares in the
+guess.</li>
+<li>Here, your job is to work out the algorithm you need to determine
+what color each letter needs to be, but not write any actual code</li>
+<li>The goal is to produce a detailed description of the algorithm in
+pseudocode or diagram form</li>
+</ul>
+</section>
+<section id="consideration-1" class="slide level2">
+<h2>Consideration #1</h2>
+<ul>
+<li>You need to determine <strong>all</strong> the green squares before
+trying to assign squares to the color yellow.</li>
+<li>Why? What can happen if you decided to color each square one at a
+time?</li>
+</ul>
+<div class="fragment">
+<p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="280.88959mm"
+   height="109.48032mm"
+   viewBox="0 0 280.88959 109.48032"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="wordle_wrong1.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview1"
+     pagecolor="#424242"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.49764326"
+     inkscape:cx="349.64806"
+     inkscape:cy="172.81456"
+     inkscape:window-width="1680"
+     inkscape:window-height="1020"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" /><defs
+     id="defs1" /><g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-234.93024,-75.14727)"><text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:48.9659px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#f8f8f2;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       x="301.48154"
+       y="183.93422"
+       id="text5"><tspan
+         sodipodi:role="line"
+         id="tspan5"
+         style="fill:#f8f8f2;stroke:none;stroke-width:2"
+         x="301.48154"
+         y="183.93422">CHOMP</tspan></text><g
+       id="g10"><rect
+         style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         id="rect1"
+         width="45.958408"
+         height="45.958408"
+         x="235.93024"
+         y="76.14727" /><text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         x="245.35751"
+         y="115.53606"
+         id="text6"><tspan
+           sodipodi:role="line"
+           id="tspan6"
+           style="fill:#000000;stroke-width:2"
+           x="245.35751"
+           y="115.53606">W</tspan></text></g><g
+       id="g11"><rect
+         style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         id="rect2"
+         width="45.958408"
+         height="45.958408"
+         x="294.16302"
+         y="76.14727" /><text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         x="303.5903"
+         y="115.51408"
+         id="text7"><tspan
+           sodipodi:role="line"
+           id="tspan7"
+           style="fill:#000000;stroke-width:2"
+           x="303.5903"
+           y="115.51408">O</tspan></text></g><g
+       id="g12"><rect
+         style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         id="rect3"
+         width="45.958408"
+         height="45.958408"
+         x="352.39581"
+         y="76.14727" /><text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         x="361.82309"
+         y="115.51408"
+         id="text8"><tspan
+           sodipodi:role="line"
+           id="tspan8"
+           style="fill:#000000;stroke-width:2"
+           x="361.82309"
+           y="115.51408">O</tspan></text></g><g
+       id="g13"><rect
+         style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         id="rect4"
+         width="45.958408"
+         height="45.958408"
+         x="410.62863"
+         y="76.14727" /><text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         x="419.98996"
+         y="115.51408"
+         id="text9"><tspan
+           sodipodi:role="line"
+           id="tspan9"
+           style="fill:#000000;stroke-width:2"
+           x="419.98996"
+           y="115.51408">S</tspan></text></g><g
+       id="g14"><rect
+         style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         id="rect5"
+         width="45.958408"
+         height="45.958408"
+         x="468.86142"
+         y="76.14727" /><text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         x="478.2887"
+         y="115.53606"
+         id="text10"><tspan
+           sodipodi:role="line"
+           id="tspan10"
+           style="fill:#000000;stroke-width:2"
+           x="478.2887"
+           y="115.53606">H</tspan></text></g><g
+       id="color_w"
+       class="fragment fade-in"><rect
+         style="fill:#75715e;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         id="rect14"
+         width="45.958408"
+         height="45.958408"
+         x="235.93024"
+         y="76.14727" /><text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         x="245.35751"
+         y="115.53606"
+         id="text14"><tspan
+           sodipodi:role="line"
+           id="tspan14"
+           style="fill:#000000;stroke-width:2"
+           x="245.35751"
+           y="115.53606">W</tspan></text></g><g
+       id="color_o1"
+       class="fragment fade-in"><rect
+         style="fill:#ffe792;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         id="rect15"
+         width="45.958408"
+         height="45.958408"
+         x="294.16302"
+         y="76.14727" /><text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         x="303.5903"
+         y="115.51408"
+         id="text15"><tspan
+           sodipodi:role="line"
+           id="tspan15"
+           style="fill:#000000;stroke-width:2"
+           x="303.5903"
+           y="115.51408">O</tspan></text></g><g
+       id="color_o2"
+       class="fragment fade-in"><rect
+         style="fill:#a6e22e;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         id="rect16"
+         width="45.958408"
+         height="45.958408"
+         x="352.39581"
+         y="76.14727" /><text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         x="361.82309"
+         y="115.51408"
+         id="text16"><tspan
+           sodipodi:role="line"
+           id="tspan16"
+           style="fill:#000000;stroke-width:2"
+           x="361.82309"
+           y="115.51408">O</tspan></text></g><path
+       style="fill:#f92672;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       d="m 305.60768,99.613367 -12.7791,-15.40341 14.43141,-11.73617 9.76949,15.29764 13.08824,-14.626 9.63757,13.7116 -13.93864,12.68167 11.46953,17.313213 -10.34754,7.78934 -11.35746,-13.01871 -11.79942,12.43487 -9.50395,-8.17231 z"
+       id="wrong"
+       class="fragment fade-in" /></g></svg>
+</p>
+</div>
+</section>
+<section id="consideration-2" class="slide level2">
+<h2>Consideration #2</h2>
+<ul>
+<li>It is useful to keep a separate string of what letters are still
+available to be matched, rather than always comparing directly to the
+hidden word.</li>
+<li>Why?</li>
+</ul>
+<div class="fragment">
+<p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="280.88959mm"
+   height="109.48032mm"
+   viewBox="0 0 280.88959 109.48032"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="wordle_wrong2.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview1"
+     pagecolor="#424242"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.49764326"
+     inkscape:cx="349.64806"
+     inkscape:cy="172.81456"
+     inkscape:window-width="1680"
+     inkscape:window-height="1020"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" /><defs
+     id="defs1" /><g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-234.93024,-75.14727)"><text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:48.9659px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#f8f8f2;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       x="301.48154"
+       y="183.93422"
+       id="text5"><tspan
+         sodipodi:role="line"
+         id="tspan5"
+         style="fill:#f8f8f2;stroke:none;stroke-width:2"
+         x="301.48154"
+         y="183.93422">GLASS</tspan></text><g
+       id="g10"><rect
+         style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         id="rect1"
+         width="45.958408"
+         height="45.958408"
+         x="235.93024"
+         y="76.14727" /><text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         x="245.35751"
+         y="115.53606"
+         id="text6"><tspan
+           sodipodi:role="line"
+           id="tspan6"
+           style="fill:#000000;stroke-width:2"
+           x="245.35751"
+           y="115.53606">S</tspan></text></g><g
+       id="g11"><rect
+         style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         id="rect2"
+         width="45.958408"
+         height="45.958408"
+         x="294.16302"
+         y="76.14727" /><text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         x="303.5903"
+         y="115.51408"
+         id="text7"><tspan
+           sodipodi:role="line"
+           id="tspan7"
+           style="fill:#000000;stroke-width:2"
+           x="303.5903"
+           y="115.51408">A</tspan></text></g><g
+       id="g12"><rect
+         style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         id="rect3"
+         width="45.958408"
+         height="45.958408"
+         x="352.39581"
+         y="76.14727" /><text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         x="361.82309"
+         y="115.51408"
+         id="text8"><tspan
+           sodipodi:role="line"
+           id="tspan8"
+           style="fill:#000000;stroke-width:2"
+           x="361.82309"
+           y="115.51408">S</tspan></text></g><g
+       id="g13"><rect
+         style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         id="rect4"
+         width="45.958408"
+         height="45.958408"
+         x="410.62863"
+         y="76.14727" /><text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         x="419.98996"
+         y="115.51408"
+         id="text9"><tspan
+           sodipodi:role="line"
+           id="tspan9"
+           style="fill:#000000;stroke-width:2"
+           x="419.98996"
+           y="115.51408">S</tspan></text></g><g
+       id="color_s1"
+       class="fragment fade-in"
+       transform="translate(58.232819)"><rect
+         style="fill:#a6e22e;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         id="rect16"
+         width="45.958408"
+         height="45.958408"
+         x="352.39581"
+         y="76.14727" /><text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         x="361.82309"
+         y="115.51408"
+         id="text16"><tspan
+           sodipodi:role="line"
+           id="tspan16"
+           style="fill:#000000;stroke-width:2"
+           x="361.82309"
+           y="115.51408">S</tspan></text></g><g
+       id="color_s2"
+       class="fragment fade-in"><rect
+         style="fill:#ffe792;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         id="rect22"
+         width="45.958408"
+         height="45.958408"
+         x="235.93024"
+         y="76.14727" /><text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         x="245.35751"
+         y="115.53606"
+         id="text22"><tspan
+           sodipodi:role="line"
+           id="tspan22"
+           style="fill:#000000;stroke-width:2"
+           x="245.35751"
+           y="115.53606">S</tspan></text></g><g
+       id="color_a"
+       class="fragment fade-in"><rect
+         style="fill:#ffe792;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         id="rect23"
+         width="45.958408"
+         height="45.958408"
+         x="294.16302"
+         y="76.14727" /><text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         x="303.5903"
+         y="115.51408"
+         id="text23"><tspan
+           sodipodi:role="line"
+           id="tspan23"
+           style="fill:#000000;stroke-width:2"
+           x="303.5903"
+           y="115.51408">A</tspan></text></g><g
+       id="color_s3"
+       class="fragment fade-in"><rect
+         style="fill:#ffe792;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         id="rect20"
+         width="45.958408"
+         height="45.958408"
+         x="352.39581"
+         y="76.14727" /><text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         x="361.82309"
+         y="115.51408"
+         id="text20"><tspan
+           sodipodi:role="line"
+           id="tspan20"
+           style="fill:#000000;stroke-width:2"
+           x="361.82309"
+           y="115.51408">S</tspan></text></g><g
+       id="g21"><rect
+         style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         id="rect21"
+         width="45.958408"
+         height="45.958408"
+         x="468.86142"
+         y="76.14727" /><text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         x="478.2887"
+         y="115.53606"
+         id="text21"><tspan
+           sodipodi:role="line"
+           id="tspan21"
+           style="fill:#000000;stroke-width:2"
+           x="478.2887"
+           y="115.53606">Y</tspan></text></g><g
+       id="g14"><rect
+         style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         id="rect5"
+         width="45.958408"
+         height="45.958408"
+         x="468.86142"
+         y="76.14727" /><text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         x="478.2887"
+         y="115.53606"
+         id="text10"><tspan
+           sodipodi:role="line"
+           id="tspan10"
+           style="fill:#000000;stroke-width:2"
+           x="478.2887"
+           y="115.53606">Y</tspan></text></g><path
+       style="fill:#f92672;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       d="m 365.4561,99.456951 -12.7791,-15.40341 14.43141,-11.73617 9.76949,15.29764 13.08824,-14.626 9.63757,13.7116 -13.93864,12.68167 11.46953,17.313209 -10.34754,7.78934 -11.35746,-13.01871 -11.79942,12.43487 -9.50395,-8.17231 z"
+       id="wrong"
+       class="fragment fade-in" /></g></svg>
+</p>
+</div>
+</section>
+<section id="pseudocode-solution" class="slide level2">
+<h2>Pseudocode Solution</h2>
+<!--
+```{.python style='max-height:900px'}
+def color_squares():
+  #Define a variable to represent the as-yet-unmatched letters
+  for #each letter position in the word:
+    if #the letter in that position matches the hidden word:
+      #Color that square green
+      #Take that letter out of the unmatched collection
+  for #each letter position in the word:
+    if #the letter is in the unmatched collection:
+      #Color that square yellow
+      #Take that letter out of the unmatched collection
+```
+-->
+<div class="CodeBox" style="width:1500px;">
+<span class="skeyword">def</span>
+<span class="funcname">color<span class="u">_</span>squares</span>():
+<span class="i">Define a variable to represent the as-yet-unmatched
+letters.</span> <span class="keyword">for</span><span class="i"> each
+letter position in the word:</span> <span class="keyword">if</span><span
+class="i"> the letter in that position matches the hidden word:</span>
+<span class="i">Color that square green.</span> <span class="i">Take
+that letter out of the unmatched set.</span> <span
+class="keyword">for</span><span class="i"> each letter position in the
+word:</span> <span class="keyword">if</span><span class="i"> the letter
+is in the unmatched set:</span> <span class="i">Color that square
+yellow.</span> <span class="i">Take that letter out of the unmatched
+set.</span>
+</div>
+</section>
+<section id="unmatched-tactics" class="slide level2">
+<h2>Unmatched Tactics</h2>
+<p>To implement the collection of unmatched letters:</p>
+<ul>
+<li>Create a variable called <code class="python">unmatched</code> that
+contains all the letters in the hidden word that have yet to be matched.
+At the start of the process, this variable should equal the hidden
+word</li>
+<li>Each time you decide on the color of a letter, remove that letter
+from the <code class="python">unmatched</code> string
+<ul>
+<li><p>You can not subtract letters from a string, so the easiest way is
+to use <code class="python">replace</code> to swap out the letter for
+some other non-alphabetic character</p></li>
+<li><p><code class="python">replace</code> will usually replace
+<strong>all</strong> the letters, which isn’t wanted here. So you can
+specify that you want it to only replace the first occurrence by
+including the index 1 as a third argument.</p>
+<pre ><code class="python">unmatched = unmatched.replace(letter, "_", 1)</code></pre></li>
+</ul></li>
+</ul>
+</section>
+<section id="problem-3" class="slide level2">
+<h2>Problem 3</h2>
+<div class="cols">
+<div class="col">
+<p><img data-src="./images/wordle_indices.png" /></p>
+</div>
+<div class="col">
 <ul>
 <li>Interacting with the <code class="python">WordleGWindow</code>
 object is mandatory in the Wordle project as a means to control or get
@@ -68,6 +623,10 @@ information from the graphical window</li>
 <li>Displaying or reading information from the graphical squares
 generally requires referencing an index for both the column and row</li>
 </ul>
+<pre ><code class="python">gw.set_square_letter(0,1,"A")
+gw.get_square_letter(4,3)</code></pre>
+</div>
+</div>
 </section>
 <section id="turn-that-frown" class="slide level2">
 <h2>Turn that frown…</h2>
@@ -75,8 +634,8 @@ generally requires referencing an index for both the column and row</li>
 <div class="col">
 <ul>
 <li>For the first part of this problem, add code to the existing
-template so that when the program is immediately run, the Wordle squares
-form a frowing face as shown to the right</li>
+template so that when the program is run, the Wordle squares immediately
+form a frowning face, as shown to the right</li>
 <li>For the square color, you can just use the string
 <code class="python">"black"</code> (or choose any other fun
 color!)</li>
@@ -110,9 +669,6 @@ so just change the ones that you need to</li>
 </figure>
 </div>
 </div>
-</section>
-<section id="problem-3-coloring" class="slide level2">
-<h2>Problem 3: Coloring</h2>
 </section>
     </div>
   </div>

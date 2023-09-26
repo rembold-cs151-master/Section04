@@ -1,7 +1,7 @@
 ---
 title: "Section 4 - Wordle"
 author: Jed Rembold and Eric Roberts
-date: "Date"
+date: Week of September 25
 slideNumber: true
 theme: monokai
 highlightjs-theme: monokai
@@ -23,14 +23,136 @@ css:
 - Your function should _return_ the final password as a string
 
 
-## Problem 2
+## The String Library
+- If you want an easy way to generate string of different groups, Python's `string` library can be useful
+- It exports several useful constant strings that you can use:
+  - `ascii_letters`: All the lowercase and capital english letters
+  - `digits`: All the numeric digits
+  - `punctuation`: All the punctuation symbols
+- You can thus produce a simple password: 
+  ```python
+  generate_password(5, string.ascii_letters)
+  ```
+- Or a difficult password: 
+  ```python
+  generate_password(15, string.ascii_letters + string.digits + string.punctuation)
+  ```
+
+## Password Key
+```{.python style='max-height:900px'}
+import random
+
+def generate_password(length, characters):
+  password = ""
+  for i in range(length):
+    password += random.choice(characters)
+  return password
+
+if __name__ == '__main__':
+  import string
+
+  chars = string.ascii_letters
+  print(f"Simple password:  {generate_password(5, chars)}")
+  chars += string.digits
+  print(f"Medium password:  {generate_password(10, chars)}")
+  chars += string.punctuation
+  print(f"Complex password: {generate_password(15, chars)}")
+```
+
+## Problem 2: Coloring
+- The most difficult part of the Wordle project is Milestone #3, in which you decide what color to apply to each of the squares in the guess.
+- Here, your job is to work out the algorithm you need to determine what color each letter needs to be, but not write any actual code
+- The goal is to produce a detailed description of the algorithm in pseudocode or diagram form
+
+
+## Consideration #1
+- You need to determine **all** the green squares before trying to assign squares to the color yellow.
+- Why? What can happen if you decided to color each square one at a time?
+
+<div class="fragment">
+
+![](./images/wordle_wrong1.svg)
+</div>
+
+## Consideration #2
+- It is useful to keep a separate string of what letters are still available to be matched, rather than always comparing directly to the hidden word.
+- Why?
+
+<div class="fragment">
+
+![](./images/wordle_wrong2.svg)
+</div>
+
+
+## Pseudocode Solution
+<!--
+```{.python style='max-height:900px'}
+def color_squares():
+  #Define a variable to represent the as-yet-unmatched letters
+  for #each letter position in the word:
+    if #the letter in that position matches the hidden word:
+      #Color that square green
+      #Take that letter out of the unmatched collection
+  for #each letter position in the word:
+    if #the letter is in the unmatched collection:
+      #Color that square yellow
+      #Take that letter out of the unmatched collection
+```
+-->
+
+<div class="CodeBox" style="width:1500px;" >
+<span class="skeyword">def</span> <span class="funcname">color<span class="u">_</span>squares</span>():
+<span class="i">Define a variable to represent the as-yet-unmatched letters.</span>
+    <span class="keyword">for</span
+><span class="i"> each letter position in the word:</span>
+        <span class="keyword">if</span
+><span class="i"> the letter in that position matches the hidden word:</span>
+            <span class="i">Color that square green.</span>
+            <span class="i">Take that letter out of the unmatched set.</span>
+    <span class="keyword">for</span
+><span class="i"> each letter position in the word:</span>
+        <span class="keyword">if</span
+><span class="i"> the letter is in the unmatched set:</span>
+            <span class="i">Color that square yellow.</span>
+            <span class="i"
+>Take that letter out of the unmatched set.</span></div>
+
+
+## Unmatched Tactics
+To implement the collection of unmatched letters:
+
+- Create a variable called `unmatched` that contains all the letters in the hidden word that have yet to be matched. At the start of the process, this variable should equal the hidden word
+- Each time you decide on the color of a letter, remove that letter from the `unmatched` string
+  - You can not subtract letters from a string, so the easiest way is to use `replace` to swap out the letter for some other non-alphabetic character
+  - `replace` will usually replace **all** the letters, which isn't wanted here. So you can specify that you want it to only replace the first occurrence by including the index 1 as a third argument.
+    ```python
+    unmatched = unmatched.replace(letter, "_", 1)
+    ```
+
+
+## Problem 3
+::::::cols
+::::col
+![](./images/wordle_indices.png)
+
+::::
+
+::::col
 - Interacting with the `WordleGWindow` object is mandatory in the Wordle project as a means to control or get information from the graphical window
 - Displaying or reading information from the graphical squares generally requires referencing an index for both the column and row
+
+```python
+gw.set_square_letter(0,1,"A")
+gw.get_square_letter(4,3)
+```
+::::
+::::::
+
 
 ## Turn that frown...
 ::::::cols
 ::::col
-- For the first part of this problem, add code to the existing template so that when the program is immediately run, the Wordle squares form a frowing face as shown to the right
+- For the first part of this problem, add code to the existing template so that when the program is run, the Wordle squares immediately form a frowning face, as shown to the right
 - For the square color, you can just use the string `"black"` (or choose any other fun color!)
 
 ::::
@@ -52,6 +174,3 @@ css:
 ![Happy Wordle!](./images/wordle_happy.png)
 ::::
 ::::::
-
-
-## Problem 3: Coloring
