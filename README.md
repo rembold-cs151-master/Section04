@@ -1,2 +1,2 @@
-# section_template
-A template file for generating slides and content for a section meeting
+# Section 04
+Contains starting templates for several problems relating to Section 04, focused on preparing for and understanding how to approach Wordle.
