@@ -24,7 +24,8 @@ css:
 
 
 ## The String Library
-- If you want an easy way to generate string of different groups, Python's `string` library can be useful
+:::{style='font-size:.9em'}
+- If you want an easy way to generate strings of different types, Python's `string` library can be useful
 - It exports several useful constant strings that you can use:
   - `ascii_letters`: All the lowercase and capital english letters
   - `digits`: All the numeric digits
@@ -33,20 +34,27 @@ css:
   ```python
   generate_password(5, string.ascii_letters)
   ```
-- Or a difficult password: 
+- Or a more difficult password: 
   ```python
-  generate_password(15, string.ascii_letters + string.digits + string.punctuation)
+  generate_password(15, string.ascii_letters + string.digits)
   ```
 
+:::
+
 ## Password Key
-```{.python style='max-height:900px'}
+```{.python style='max-height:900px; font-size:.8em;'}
 import random
 
 def generate_password(length, characters):
+  """
+  Generates a password of desired length from 
+  provided characters. 
+  """
   password = ""
   for i in range(length):
     password += random.choice(characters)
   return password
+
 
 if __name__ == '__main__':
   import string
@@ -67,11 +75,11 @@ if __name__ == '__main__':
 
 ## Consideration #1
 - You need to determine **all** the green squares before trying to assign squares to the color yellow.
-- Why? What can happen if you decided to color each square one at a time?
+- Why? What can happen if you decide to color each square one at a time, from front to back?
 
 <div class="fragment">
 
-![](./images/wordle_wrong1.svg)
+![](./images/wordle_wrong1_embeds.svg)
 </div>
 
 ## Consideration #2
@@ -80,55 +88,37 @@ if __name__ == '__main__':
 
 <div class="fragment">
 
-![](./images/wordle_wrong2.svg)
+![](./images/wordle_wrong2_embeds.svg)
 </div>
 
 
 ## Pseudocode Solution
-<!--
-```{.python style='max-height:900px'}
+```{.mypython style='max-height:900px'}
 def color_squares():
-  #Define a variable to represent the as-yet-unmatched letters
-  for #each letter position in the word:
-    if #the letter in that position matches the hidden word:
-      #Color that square green
-      #Take that letter out of the unmatched collection
-  for #each letter position in the word:
-    if #the letter is in the unmatched collection:
-      #Color that square yellow
-      #Take that letter out of the unmatched collection
+  |||Define a variable to represent the as-yet-unmatched letters|||
+  for |||each letter position in the word|||
+    if |||the letter in that position matches the hidden word:|||
+      |||Color that square green|||
+      |||Take that letter out of the unmatched collection|||
+  for |||each letter position in the word:|||
+    if |||the letter is in the unmatched collection:|||
+      |||Color that square yellow|||
+      |||Take that letter out of the unmatched collection|||
 ```
--->
-
-<div class="CodeBox" style="width:1500px;" >
-<span class="skeyword">def</span> <span class="funcname">color<span class="u">_</span>squares</span>():
-<span class="i">Define a variable to represent the as-yet-unmatched letters.</span>
-    <span class="keyword">for</span
-><span class="i"> each letter position in the word:</span>
-        <span class="keyword">if</span
-><span class="i"> the letter in that position matches the hidden word:</span>
-            <span class="i">Color that square green.</span>
-            <span class="i">Take that letter out of the unmatched set.</span>
-    <span class="keyword">for</span
-><span class="i"> each letter position in the word:</span>
-        <span class="keyword">if</span
-><span class="i"> the letter is in the unmatched set:</span>
-            <span class="i">Color that square yellow.</span>
-            <span class="i"
->Take that letter out of the unmatched set.</span></div>
 
 
 ## Unmatched Tactics
+:::{style="font-size:.9em"}
 To implement the collection of unmatched letters:
 
 - Create a variable called `unmatched` that contains all the letters in the hidden word that have yet to be matched. At the start of the process, this variable should equal the hidden word
 - Each time you decide on the color of a letter, remove that letter from the `unmatched` string
   - You can not subtract letters from a string, so the easiest way is to use `replace` to swap out the letter for some other non-alphabetic character
-  - `replace` will usually replace **all** the letters, which isn't wanted here. So you can specify that you want it to only replace the first occurrence by including the index 1 as a third argument.
+  - `replace` will usually replace **all** the letters, which isn't wanted here. So you can specify that you want it to only replace the first occurrence by including the max count of 1 as a third argument.
     ```python
     unmatched = unmatched.replace(letter, "_", 1)
     ```
-
+:::
 
 ## Problem 3
 ::::::cols

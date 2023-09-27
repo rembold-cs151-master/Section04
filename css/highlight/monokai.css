@@ -69,3 +69,16 @@ Monokai style - ported by Luigi Maselli - http://grigio.org
 .hljs-selector-id {
   font-weight: bold;
 }
+
+.hljs-defkeyword {
+  font-style: italic;
+  font-weight: bold;
+  color: #66D9EF;
+}
+
+.hljs-pseudo {
+  font-family: sans-serif;
+  font-style: italic;
+  font-size: 1.15em;
+  color: #F8F8F2;
+}

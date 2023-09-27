@@ -16,11 +16,8 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
+    ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -61,8 +58,9 @@ string</li>
 </section>
 <section id="the-string-library" class="slide level2">
 <h2>The String Library</h2>
+<div style="font-size:.9em">
 <ul>
-<li><p>If you want an easy way to generate string of different groups,
+<li><p>If you want an easy way to generate strings of different types,
 Python’s <code class="python">string</code> library can be
 useful</p></li>
 <li><p>It exports several useful constant strings that you can use:</p>
@@ -75,19 +73,25 @@ symbols</li>
 </ul></li>
 <li><p>You can thus produce a simple password:</p>
 <pre ><code class="python">generate_password(5, string.ascii_letters)</code></pre></li>
-<li><p>Or a difficult password:</p>
-<pre ><code class="python">generate_password(15, string.ascii_letters + string.digits + string.punctuation)</code></pre></li>
+<li><p>Or a more difficult password:</p>
+<pre ><code class="python">generate_password(15, string.ascii_letters + string.digits)</code></pre></li>
 </ul>
+</div>
 </section>
 <section id="password-key" class="slide level2">
 <h2>Password Key</h2>
-<pre ><code class="python" style="max-height:900px">import random
+<pre ><code class="python" style="max-height:900px; font-size:.8em;">import random
 
 def generate_password(length, characters):
+  """
+  Generates a password of desired length from 
+  provided characters. 
+  """
   password = ""
   for i in range(length):
     password += random.choice(characters)
   return password
+
 
 if __name__ == '__main__':
   import string
@@ -116,8 +120,8 @@ pseudocode or diagram form</li>
 <ul>
 <li>You need to determine <strong>all</strong> the green squares before
 trying to assign squares to the color yellow.</li>
-<li>Why? What can happen if you decided to color each square one at a
-time?</li>
+<li>Why? What can happen if you decide to color each square one at a
+time, from front to back?</li>
 </ul>
 <div class="fragment">
 <p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -131,7 +135,7 @@ time?</li>
    id="svg1"
    xml:space="preserve"
    inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
-   sodipodi:docname="wordle_wrong1.svg"
+   sodipodi:docname="wordle_wrong1_embeds.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -147,113 +151,77 @@ time?</li>
      inkscape:document-units="mm"
      inkscape:zoom="0.49764326"
      inkscape:cx="349.64806"
-     inkscape:cy="172.81456"
-     inkscape:window-width="1680"
-     inkscape:window-height="1020"
-     inkscape:window-x="0"
-     inkscape:window-y="30"
+     inkscape:cy="173.81929"
+     inkscape:window-width="1465"
+     inkscape:window-height="1283"
+     inkscape:window-x="1627"
+     inkscape:window-y="91"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" /><defs
      id="defs1" /><g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-234.93024,-75.14727)"><text
-       xml:space="preserve"
-       style="font-weight:bold;font-size:48.9659px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#f8f8f2;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-       x="301.48154"
-       y="183.93422"
-       id="text5"><tspan
-         sodipodi:role="line"
-         id="tspan5"
-         style="fill:#f8f8f2;stroke:none;stroke-width:2"
-         x="301.48154"
-         y="183.93422">CHOMP</tspan></text><g
+     transform="translate(-234.93024,-75.14727)"><path
+       d="m 327.32731,182.90613 q -1.67364,0.86073 -3.51464,1.29109 -1.84101,0.43036 -3.87328,0.43036 -7.22056,0 -11.02211,-4.75791 -3.80156,-4.75792 -3.80156,-13.74775 0,-9.01375 3.80156,-13.77166 3.80155,-4.75792 11.02211,-4.75792 2.03227,0 3.89718,0.43036 1.86492,0.43037 3.49074,1.2911 v 7.84219 q -1.8171,-1.67364 -3.53855,-2.43873 -1.69755,-0.789 -3.51465,-0.789 -3.87328,0 -5.85773,3.08428 -1.96055,3.06037 -1.96055,9.10938 0,6.0251 1.96055,9.10938 1.98445,3.06036 5.85773,3.06036 1.8171,0 3.51465,-0.76509 1.72145,-0.789 3.53855,-2.46264 z m 6.90974,-34.66824 h 7.05319 v 13.60429 h 8.82247 v -13.60429 h 7.05319 v 35.69633 h -7.05319 v -15.87566 h -8.82247 v 15.87566 h -7.05319 z m 40.93243,5.69037 q -2.70173,0 -3.94501,2.893 -1.24327,2.8691 -1.24327,9.30066 0,6.40764 1.24327,9.30065 1.24328,2.86909 3.94501,2.86909 2.72564,0 3.96892,-2.86909 1.24327,-2.89301 1.24327,-9.30065 0,-6.43156 -1.24327,-9.30066 -1.24328,-2.893 -3.96892,-2.893 z m -12.52838,12.19366 q 0,-9.1572 3.156,-13.84339 3.17992,-4.68619 9.37238,-4.68619 6.21637,0 9.37238,4.68619 3.17991,4.68619 3.17991,13.84339 0,9.13328 -3.17991,13.81947 -3.15601,4.68619 -9.37238,4.68619 -6.19246,0 -9.37238,-4.68619 -3.156,-4.68619 -3.156,-13.81947 z m 29.3365,-17.88403 h 8.41602 l 4.25582,15.66048 4.23192,-15.66048 h 8.46383 v 35.69633 h -6.07292 V 155.3389 l -3.77764,15.61266 h -5.61865 l -3.82546,-15.61266 v 28.59532 h -6.07292 z m 38.35025,5.92946 v 10.4722 h 2.893 q 3.46683,0 4.85356,-1.17155 1.41063,-1.17154 1.41063,-4.06455 0,-2.893 -1.41063,-4.06455 -1.38673,-1.17155 -4.85356,-1.17155 z m -7.0532,-5.92946 h 9.6832 q 7.38792,0 10.61566,2.63 3.25164,2.63001 3.25164,8.53556 0,5.90556 -3.25164,8.53556 -3.22774,2.63001 -10.61566,2.63001 h -2.63 v 13.3652 h -7.0532 z"
+       id="text5"
+       style="font-weight:bold;font-size:48.9659px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#f8f8f2;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       aria-label="CHOMP" /><g
        id="g10"><rect
          style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
          id="rect1"
          width="45.958408"
          height="45.958408"
          x="235.93024"
-         y="76.14727" /><text
-         xml:space="preserve"
-         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-         x="245.35751"
-         y="115.53606"
-         id="text6"><tspan
-           sodipodi:role="line"
-           id="tspan6"
-           style="fill:#000000;stroke-width:2"
-           x="245.35751"
-           y="115.53606">W</tspan></text></g><g
+         y="76.14727" /><path
+         d="m 245.35751,82.716884 h 5.67137 l 2.35207,24.092306 2.83569,-15.58526 h 5.38559 l 3.29731,15.58526 1.84649,-24.092306 h 5.71533 l -3.78091,32.819176 h -6.04506 l -3.73695,-17.233916 -3.49514,17.233916 h -6.00109 z"
+         id="text6"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         aria-label="W" /></g><g
        id="g11"><rect
          style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
          id="rect2"
          width="45.958408"
          height="45.958408"
          x="294.16302"
-         y="76.14727" /><text
-         xml:space="preserve"
-         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-         x="303.5903"
-         y="115.51408"
-         id="text7"><tspan
-           sodipodi:role="line"
-           id="tspan7"
-           style="fill:#000000;stroke-width:2"
-           x="303.5903"
-           y="115.51408">O</tspan></text></g><g
+         y="76.14727" /><path
+         d="m 317.13123,87.926627 q -2.48397,0 -3.62703,2.659826 -1.14307,2.637844 -1.14307,8.55101 0,5.891187 1.14307,8.551007 1.14306,2.63785 3.62703,2.63785 2.50595,0 3.64902,-2.63785 1.14307,-2.65982 1.14307,-8.551007 0,-5.913166 -1.14307,-8.55101 -1.14307,-2.659826 -3.64902,-2.659826 z m -11.51858,11.210836 q 0,-8.419118 2.90163,-12.727596 2.92361,-4.308478 8.61695,-4.308478 5.71533,0 8.61696,4.308478 2.92361,4.308478 2.92361,12.727596 0,8.397137 -2.92361,12.705617 -2.90163,4.30848 -8.61696,4.30848 -5.69334,0 -8.61695,-4.30848 -2.90163,-4.30848 -2.90163,-12.705617 z"
+         id="text7"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         aria-label="O" /></g><g
        id="g12"><rect
          style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
          id="rect3"
          width="45.958408"
          height="45.958408"
          x="352.39581"
-         y="76.14727" /><text
-         xml:space="preserve"
-         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-         x="361.82309"
-         y="115.51408"
-         id="text8"><tspan
-           sodipodi:role="line"
-           id="tspan8"
-           style="fill:#000000;stroke-width:2"
-           x="361.82309"
-           y="115.51408">O</tspan></text></g><g
+         y="76.14727" /><path
+         d="m 375.36402,87.926627 q -2.48397,0 -3.62703,2.659826 -1.14307,2.637844 -1.14307,8.55101 0,5.891187 1.14307,8.551007 1.14306,2.63785 3.62703,2.63785 2.50595,0 3.64902,-2.63785 1.14306,-2.65982 1.14306,-8.551007 0,-5.913166 -1.14306,-8.55101 -1.14307,-2.659826 -3.64902,-2.659826 z m -11.51858,11.210836 q 0,-8.419118 2.90162,-12.727596 2.92361,-4.308478 8.61696,-4.308478 5.71533,0 8.61696,4.308478 2.92361,4.308478 2.92361,12.727596 0,8.397137 -2.92361,12.705617 -2.90163,4.30848 -8.61696,4.30848 -5.69335,0 -8.61696,-4.30848 -2.90162,-4.30848 -2.90162,-12.705617 z"
+         id="text8"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         aria-label="O" /></g><g
        id="g13"><rect
          style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
          id="rect4"
          width="45.958408"
          height="45.958408"
          x="410.62863"
-         y="76.14727" /><text
-         xml:space="preserve"
-         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-         x="419.98996"
-         y="115.51408"
-         id="text9"><tspan
-           sodipodi:role="line"
-           id="tspan9"
-           style="fill:#000000;stroke-width:2"
-           x="419.98996"
-           y="115.51408">S</tspan></text></g><g
+         y="76.14727" /><path
+         d="m 431.2008,101.11585 q -4.902,-1.868477 -6.63858,-3.912806 -1.73658,-2.06631 -1.73658,-5.539471 0,-4.462353 2.85767,-7.012268 2.85766,-2.549916 7.84758,-2.549916 2.26415,0 4.5283,0.527569 2.26415,0.505587 4.48433,1.51676 v 6.330825 q -2.08829,-1.472796 -4.24253,-2.242167 -2.15424,-0.769371 -4.26451,-0.769371 -2.35208,0 -3.60506,0.945227 -1.25297,0.945227 -1.25297,2.70379 0,1.362886 0.90126,2.264149 0.92325,0.879281 3.82488,1.956401 l 2.79171,1.055137 q 3.95677,1.450814 5.82524,3.846851 1.86847,2.39605 1.86847,6.04506 0,4.96794 -2.94559,7.42993 -2.92361,2.44001 -8.85876,2.44001 -2.44,0 -4.90199,-0.59352 -2.44,-0.57153 -4.72614,-1.7146 v -6.70452 q 2.59388,1.84649 5.01191,2.74776 2.44,0.90126 4.81406,0.90126 2.39604,0 3.71496,-1.07712 1.31893,-1.0991 1.31893,-3.0555 0,-1.4728 -0.87928,-2.5719 -0.87929,-1.12108 -2.54992,-1.75856 z"
+         id="text9"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         aria-label="S" /></g><g
        id="g14"><rect
          style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
          id="rect5"
          width="45.958408"
          height="45.958408"
          x="468.86142"
-         y="76.14727" /><text
-         xml:space="preserve"
-         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-         x="478.2887"
-         y="115.53606"
-         id="text10"><tspan
-           sodipodi:role="line"
-           id="tspan10"
-           style="fill:#000000;stroke-width:2"
-           x="478.2887"
-           y="115.53606">H</tspan></text></g><g
+         y="76.14727" /><path
+         d="m 481.30023,82.716884 h 6.4847 V 95.22466 h 8.11137 V 82.716884 h 6.4847 v 32.819176 h -6.4847 v -14.59607 h -8.11137 v 14.59607 h -6.4847 z"
+         id="text10"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         aria-label="H" /></g><g
        id="color_w"
        class="fragment fade-in"><rect
          style="fill:#75715e;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
@@ -261,17 +229,11 @@ time?</li>
          width="45.958408"
          height="45.958408"
          x="235.93024"
-         y="76.14727" /><text
-         xml:space="preserve"
-         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-         x="245.35751"
-         y="115.53606"
-         id="text14"><tspan
-           sodipodi:role="line"
-           id="tspan14"
-           style="fill:#000000;stroke-width:2"
-           x="245.35751"
-           y="115.53606">W</tspan></text></g><g
+         y="76.14727" /><path
+         d="m 245.35751,82.716884 h 5.67137 l 2.35207,24.092306 2.83569,-15.58526 h 5.38559 l 3.29731,15.58526 1.84649,-24.092306 h 5.71533 l -3.78091,32.819176 h -6.04506 l -3.73695,-17.233916 -3.49514,17.233916 h -6.00109 z"
+         id="text14"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         aria-label="W" /></g><g
        id="color_o1"
        class="fragment fade-in"><rect
          style="fill:#ffe792;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
@@ -279,17 +241,11 @@ time?</li>
          width="45.958408"
          height="45.958408"
          x="294.16302"
-         y="76.14727" /><text
-         xml:space="preserve"
-         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-         x="303.5903"
-         y="115.51408"
-         id="text15"><tspan
-           sodipodi:role="line"
-           id="tspan15"
-           style="fill:#000000;stroke-width:2"
-           x="303.5903"
-           y="115.51408">O</tspan></text></g><g
+         y="76.14727" /><path
+         d="m 317.13123,87.926627 q -2.48397,0 -3.62703,2.659826 -1.14307,2.637844 -1.14307,8.55101 0,5.891187 1.14307,8.551007 1.14306,2.63785 3.62703,2.63785 2.50595,0 3.64902,-2.63785 1.14307,-2.65982 1.14307,-8.551007 0,-5.913166 -1.14307,-8.55101 -1.14307,-2.659826 -3.64902,-2.659826 z m -11.51858,11.210836 q 0,-8.419118 2.90163,-12.727596 2.92361,-4.308478 8.61695,-4.308478 5.71533,0 8.61696,4.308478 2.92361,4.308478 2.92361,12.727596 0,8.397137 -2.92361,12.705617 -2.90163,4.30848 -8.61696,4.30848 -5.69334,0 -8.61695,-4.30848 -2.90163,-4.30848 -2.90163,-12.705617 z"
+         id="text15"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         aria-label="O" /></g><g
        id="color_o2"
        class="fragment fade-in"><rect
          style="fill:#a6e22e;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
@@ -297,17 +253,11 @@ time?</li>
          width="45.958408"
          height="45.958408"
          x="352.39581"
-         y="76.14727" /><text
-         xml:space="preserve"
-         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-         x="361.82309"
-         y="115.51408"
-         id="text16"><tspan
-           sodipodi:role="line"
-           id="tspan16"
-           style="fill:#000000;stroke-width:2"
-           x="361.82309"
-           y="115.51408">O</tspan></text></g><path
+         y="76.14727" /><path
+         d="m 375.36402,87.926627 q -2.48397,0 -3.62703,2.659826 -1.14307,2.637844 -1.14307,8.55101 0,5.891187 1.14307,8.551007 1.14306,2.63785 3.62703,2.63785 2.50595,0 3.64902,-2.63785 1.14306,-2.65982 1.14306,-8.551007 0,-5.913166 -1.14306,-8.55101 -1.14307,-2.659826 -3.64902,-2.659826 z m -11.51858,11.210836 q 0,-8.419118 2.90162,-12.727596 2.92361,-4.308478 8.61696,-4.308478 5.71533,0 8.61696,4.308478 2.92361,4.308478 2.92361,12.727596 0,8.397137 -2.92361,12.705617 -2.90163,4.30848 -8.61696,4.30848 -5.69335,0 -8.61696,-4.30848 -2.90162,-4.30848 -2.90162,-12.705617 z"
+         id="text16"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         aria-label="O" /></g><path
        style="fill:#f92672;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
        d="m 305.60768,99.613367 -12.7791,-15.40341 14.43141,-11.73617 9.76949,15.29764 13.08824,-14.626 9.63757,13.7116 -13.93864,12.68167 11.46953,17.313213 -10.34754,7.78934 -11.35746,-13.01871 -11.79942,12.43487 -9.50395,-8.17231 z"
        id="wrong"
@@ -335,7 +285,7 @@ hidden word.</li>
    id="svg1"
    xml:space="preserve"
    inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
-   sodipodi:docname="wordle_wrong2.svg"
+   sodipodi:docname="wordle_wrong2_embeds.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -351,96 +301,66 @@ hidden word.</li>
      inkscape:document-units="mm"
      inkscape:zoom="0.49764326"
      inkscape:cx="349.64806"
-     inkscape:cy="172.81456"
-     inkscape:window-width="1680"
-     inkscape:window-height="1020"
-     inkscape:window-x="0"
-     inkscape:window-y="30"
+     inkscape:cy="173.81929"
+     inkscape:window-width="1465"
+     inkscape:window-height="1283"
+     inkscape:window-x="1627"
+     inkscape:window-y="91"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" /><defs
      id="defs1" /><g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-234.93024,-75.14727)"><text
-       xml:space="preserve"
-       style="font-weight:bold;font-size:48.9659px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#f8f8f2;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-       x="301.48154"
-       y="183.93422"
-       id="text5"><tspan
-         sodipodi:role="line"
-         id="tspan5"
-         style="fill:#f8f8f2;stroke:none;stroke-width:2"
-         x="301.48154"
-         y="183.93422">GLASS</tspan></text><g
+     transform="translate(-234.93024,-75.14727)"><path
+       d="m 322.3303,177.47875 v -6.8141 h -4.82965 v -5.92946 h 10.9982 v 16.35384 q -2.03227,1.74537 -4.49491,2.65392 -2.43873,0.88463 -5.2361,0.88463 -6.93365,0 -10.71129,-4.80573 -3.77764,-4.82965 -3.77764,-13.69993 0,-9.01375 3.80155,-13.77166 3.82546,-4.75792 11.02211,-4.75792 2.15182,0 4.23191,0.62164 2.0801,0.59773 3.89719,1.74536 v 7.81829 q -1.48237,-1.91273 -3.419,-2.8691 -1.91274,-0.98027 -4.20801,-0.98027 -4.01674,0 -6.00119,3.03646 -1.98446,3.01255 -1.98446,9.1572 0,5.95337 1.91273,9.06156 1.91273,3.10818 5.57083,3.10818 1.09982,0 1.91273,-0.19127 0.81291,-0.21518 1.315,-0.62164 z m 14.01075,6.45547 v -35.69633 h 7.05319 v 29.47996 h 15.08667 v 6.21637 z m 38.82843,-29.24087 -3.32337,14.60848 h 6.67065 z m -4.30364,-6.45546 h 8.63119 l 9.63538,35.69633 h -7.05319 l -2.19964,-8.82247 h -9.44411 l -2.15182,8.82247 h -7.05319 z m 31.24923,20.03585 q -5.33173,-2.03228 -7.22055,-4.25583 -1.88882,-2.24746 -1.88882,-6.0251 0,-4.85355 3.10818,-7.62701 3.10819,-2.77346 8.53556,-2.77346 2.46264,0 4.92528,0.57382 2.46264,0.54991 4.87747,1.64973 v 6.88583 q -2.27137,-1.60191 -4.61447,-2.43873 -2.34309,-0.83682 -4.63837,-0.83682 -2.55828,0 -3.9211,1.02809 -1.36282,1.02809 -1.36282,2.94082 0,1.48237 0.98028,2.46264 1.00418,0.95637 4.16019,2.12792 l 3.03646,1.14764 q 4.30364,1.578 6.33592,4.18409 2.03227,2.6061 2.03227,6.57501 0,5.40347 -3.20382,8.08129 -3.17992,2.65391 -9.63538,2.65391 -2.65391,0 -5.33174,-0.64554 -2.65391,-0.62164 -5.14046,-1.86491 v -7.29229 q 2.82128,2.00837 5.45128,2.98864 2.65392,0.98028 5.2361,0.98028 2.6061,0 4.04064,-1.17155 1.43455,-1.19546 1.43455,-3.32337 0,-1.60191 -0.95636,-2.79737 -0.95637,-1.21936 -2.77346,-1.91273 z m 29.47996,0 q -5.33173,-2.03228 -7.22056,-4.25583 -1.88882,-2.24746 -1.88882,-6.0251 0,-4.85355 3.10819,-7.62701 3.10819,-2.77346 8.53556,-2.77346 2.46264,0 4.92528,0.57382 2.46264,0.54991 4.87746,1.64973 v 6.88583 q -2.27136,-1.60191 -4.61446,-2.43873 -2.34309,-0.83682 -4.63837,-0.83682 -2.55828,0 -3.9211,1.02809 -1.36282,1.02809 -1.36282,2.94082 0,1.48237 0.98028,2.46264 1.00418,0.95637 4.16018,2.12792 l 3.03646,1.14764 q 4.30365,1.578 6.33592,4.18409 2.03228,2.6061 2.03228,6.57501 0,5.40347 -3.20382,8.08129 -3.17992,2.65391 -9.63538,2.65391 -2.65392,0 -5.33174,-0.64554 -2.65391,-0.62164 -5.14046,-1.86491 v -7.29229 q 2.82127,2.00837 5.45128,2.98864 2.65391,0.98028 5.2361,0.98028 2.60609,0 4.04064,-1.17155 1.43455,-1.19546 1.43455,-3.32337 0,-1.60191 -0.95637,-2.79737 -0.95636,-1.21936 -2.77345,-1.91273 z"
+       id="text5"
+       style="font-weight:bold;font-size:48.9659px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#f8f8f2;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       aria-label="GLASS" /><g
        id="g10"><rect
          style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
          id="rect1"
          width="45.958408"
          height="45.958408"
          x="235.93024"
-         y="76.14727" /><text
-         xml:space="preserve"
-         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-         x="245.35751"
-         y="115.53606"
-         id="text6"><tspan
-           sodipodi:role="line"
-           id="tspan6"
-           style="fill:#000000;stroke-width:2"
-           x="245.35751"
-           y="115.53606">S</tspan></text></g><g
+         y="76.14727" /><path
+         d="m 256.56835,101.13783 q -4.90199,-1.868476 -6.63857,-3.912805 -1.73658,-2.066311 -1.73658,-5.539472 0,-4.462352 2.85766,-7.012268 2.85766,-2.549916 7.84758,-2.549916 2.26415,0 4.5283,0.527569 2.26415,0.505587 4.48434,1.51676 v 6.330825 q -2.0883,-1.472796 -4.24253,-2.242167 -2.15424,-0.769371 -4.26452,-0.769371 -2.35208,0 -3.60505,0.945227 -1.25298,0.945228 -1.25298,2.70379 0,1.362886 0.90127,2.264149 0.92324,0.879282 3.82487,1.956401 l 2.79172,1.055138 q 3.95676,1.450814 5.82524,3.84686 1.86847,2.39604 1.86847,6.04505 0,4.96794 -2.94559,7.42993 -2.92361,2.44001 -8.85876,2.44001 -2.44001,0 -4.902,-0.59352 -2.44,-0.57153 -4.72613,-1.7146 v -6.70452 q 2.59388,1.84649 5.0119,2.74776 2.44001,0.90126 4.81407,0.90126 2.39604,0 3.71496,-1.07712 1.31892,-1.0991 1.31892,-3.0555 0,-1.4728 -0.87928,-2.5719 -0.87928,-1.12108 -2.54992,-1.75856 z"
+         id="text6"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         aria-label="S" /></g><g
        id="g11"><rect
          style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
          id="rect2"
          width="45.958408"
          height="45.958408"
          x="294.16302"
-         y="76.14727" /><text
-         xml:space="preserve"
-         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-         x="303.5903"
-         y="115.51408"
-         id="text7"><tspan
-           sodipodi:role="line"
-           id="tspan7"
-           style="fill:#000000;stroke-width:2"
-           x="303.5903"
-           y="115.51408">A</tspan></text></g><g
+         y="76.14727" /><path
+         d="m 317.13123,88.630052 -3.0555,13.431018 h 6.13299 z m -3.95676,-5.935148 h 7.93551 l 8.85876,32.819176 h -6.4847 l -2.02235,-8.11137 h -8.6829 l -1.97838,8.11137 h -6.4847 z"
+         id="text7"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         aria-label="A" /></g><g
        id="g12"><rect
          style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
          id="rect3"
          width="45.958408"
          height="45.958408"
          x="352.39581"
-         y="76.14727" /><text
-         xml:space="preserve"
-         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-         x="361.82309"
-         y="115.51408"
-         id="text8"><tspan
-           sodipodi:role="line"
-           id="tspan8"
-           style="fill:#000000;stroke-width:2"
-           x="361.82309"
-           y="115.51408">S</tspan></text></g><g
+         y="76.14727" /><path
+         d="m 373.03393,101.11585 q -4.902,-1.868477 -6.63858,-3.912806 -1.73658,-2.06631 -1.73658,-5.539471 0,-4.462353 2.85767,-7.012268 2.85766,-2.549916 7.84758,-2.549916 2.26415,0 4.5283,0.527569 2.26415,0.505587 4.48433,1.51676 v 6.330825 q -2.08829,-1.472796 -4.24253,-2.242167 -2.15424,-0.769371 -4.26451,-0.769371 -2.35208,0 -3.60506,0.945227 -1.25297,0.945227 -1.25297,2.70379 0,1.362886 0.90126,2.264149 0.92325,0.879281 3.82488,1.956401 l 2.79171,1.055137 q 3.95677,1.450814 5.82524,3.846851 1.86847,2.39605 1.86847,6.04506 0,4.96794 -2.94559,7.42993 -2.92361,2.44001 -8.85876,2.44001 -2.44,0 -4.90199,-0.59352 -2.44001,-0.57153 -4.72614,-1.7146 v -6.70452 q 2.59388,1.84649 5.01191,2.74776 2.44,0.90126 4.81406,0.90126 2.39604,0 3.71496,-1.07712 1.31893,-1.0991 1.31893,-3.0555 0,-1.4728 -0.87928,-2.5719 -0.87929,-1.12108 -2.54992,-1.75856 z"
+         id="text8"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         aria-label="S" /></g><g
        id="g13"><rect
          style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
          id="rect4"
          width="45.958408"
          height="45.958408"
          x="410.62863"
-         y="76.14727" /><text
-         xml:space="preserve"
-         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-         x="419.98996"
-         y="115.51408"
-         id="text9"><tspan
-           sodipodi:role="line"
-           id="tspan9"
-           style="fill:#000000;stroke-width:2"
-           x="419.98996"
-           y="115.51408">S</tspan></text></g><g
+         y="76.14727" /><path
+         d="m 431.2008,101.11585 q -4.902,-1.868477 -6.63858,-3.912806 -1.73658,-2.06631 -1.73658,-5.539471 0,-4.462353 2.85767,-7.012268 2.85766,-2.549916 7.84758,-2.549916 2.26415,0 4.5283,0.527569 2.26415,0.505587 4.48433,1.51676 v 6.330825 q -2.08829,-1.472796 -4.24253,-2.242167 -2.15424,-0.769371 -4.26451,-0.769371 -2.35208,0 -3.60506,0.945227 -1.25297,0.945227 -1.25297,2.70379 0,1.362886 0.90126,2.264149 0.92325,0.879281 3.82488,1.956401 l 2.79171,1.055137 q 3.95677,1.450814 5.82524,3.846851 1.86847,2.39605 1.86847,6.04506 0,4.96794 -2.94559,7.42993 -2.92361,2.44001 -8.85876,2.44001 -2.44,0 -4.90199,-0.59352 -2.44,-0.57153 -4.72614,-1.7146 v -6.70452 q 2.59388,1.84649 5.01191,2.74776 2.44,0.90126 4.81406,0.90126 2.39604,0 3.71496,-1.07712 1.31893,-1.0991 1.31893,-3.0555 0,-1.4728 -0.87928,-2.5719 -0.87929,-1.12108 -2.54992,-1.75856 z"
+         id="text9"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         aria-label="S" /></g><g
        id="color_s1"
        class="fragment fade-in"
        transform="translate(58.232819)"><rect
@@ -449,17 +369,11 @@ hidden word.</li>
          width="45.958408"
          height="45.958408"
          x="352.39581"
-         y="76.14727" /><text
-         xml:space="preserve"
-         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-         x="361.82309"
-         y="115.51408"
-         id="text16"><tspan
-           sodipodi:role="line"
-           id="tspan16"
-           style="fill:#000000;stroke-width:2"
-           x="361.82309"
-           y="115.51408">S</tspan></text></g><g
+         y="76.14727" /><path
+         d="m 373.03393,101.11585 q -4.902,-1.868477 -6.63858,-3.912806 -1.73658,-2.06631 -1.73658,-5.539471 0,-4.462353 2.85767,-7.012268 2.85766,-2.549916 7.84758,-2.549916 2.26415,0 4.5283,0.527569 2.26415,0.505587 4.48433,1.51676 v 6.330825 q -2.08829,-1.472796 -4.24253,-2.242167 -2.15424,-0.769371 -4.26451,-0.769371 -2.35208,0 -3.60506,0.945227 -1.25297,0.945227 -1.25297,2.70379 0,1.362886 0.90126,2.264149 0.92325,0.879281 3.82488,1.956401 l 2.79171,1.055137 q 3.95677,1.450814 5.82524,3.846851 1.86847,2.39605 1.86847,6.04506 0,4.96794 -2.94559,7.42993 -2.92361,2.44001 -8.85876,2.44001 -2.44,0 -4.90199,-0.59352 -2.44001,-0.57153 -4.72614,-1.7146 v -6.70452 q 2.59388,1.84649 5.01191,2.74776 2.44,0.90126 4.81406,0.90126 2.39604,0 3.71496,-1.07712 1.31893,-1.0991 1.31893,-3.0555 0,-1.4728 -0.87928,-2.5719 -0.87929,-1.12108 -2.54992,-1.75856 z"
+         id="text16"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         aria-label="S" /></g><g
        id="color_s2"
        class="fragment fade-in"><rect
          style="fill:#ffe792;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
@@ -467,17 +381,11 @@ hidden word.</li>
          width="45.958408"
          height="45.958408"
          x="235.93024"
-         y="76.14727" /><text
-         xml:space="preserve"
-         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-         x="245.35751"
-         y="115.53606"
-         id="text22"><tspan
-           sodipodi:role="line"
-           id="tspan22"
-           style="fill:#000000;stroke-width:2"
-           x="245.35751"
-           y="115.53606">S</tspan></text></g><g
+         y="76.14727" /><path
+         d="m 256.56835,101.13783 q -4.90199,-1.868476 -6.63857,-3.912805 -1.73658,-2.066311 -1.73658,-5.539472 0,-4.462352 2.85766,-7.012268 2.85766,-2.549916 7.84758,-2.549916 2.26415,0 4.5283,0.527569 2.26415,0.505587 4.48434,1.51676 v 6.330825 q -2.0883,-1.472796 -4.24253,-2.242167 -2.15424,-0.769371 -4.26452,-0.769371 -2.35208,0 -3.60505,0.945227 -1.25298,0.945228 -1.25298,2.70379 0,1.362886 0.90127,2.264149 0.92324,0.879282 3.82487,1.956401 l 2.79172,1.055138 q 3.95676,1.450814 5.82524,3.84686 1.86847,2.39604 1.86847,6.04505 0,4.96794 -2.94559,7.42993 -2.92361,2.44001 -8.85876,2.44001 -2.44001,0 -4.902,-0.59352 -2.44,-0.57153 -4.72613,-1.7146 v -6.70452 q 2.59388,1.84649 5.0119,2.74776 2.44001,0.90126 4.81407,0.90126 2.39604,0 3.71496,-1.07712 1.31892,-1.0991 1.31892,-3.0555 0,-1.4728 -0.87928,-2.5719 -0.87928,-1.12108 -2.54992,-1.75856 z"
+         id="text22"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         aria-label="S" /></g><g
        id="color_a"
        class="fragment fade-in"><rect
          style="fill:#ffe792;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
@@ -485,17 +393,11 @@ hidden word.</li>
          width="45.958408"
          height="45.958408"
          x="294.16302"
-         y="76.14727" /><text
-         xml:space="preserve"
-         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-         x="303.5903"
-         y="115.51408"
-         id="text23"><tspan
-           sodipodi:role="line"
-           id="tspan23"
-           style="fill:#000000;stroke-width:2"
-           x="303.5903"
-           y="115.51408">A</tspan></text></g><g
+         y="76.14727" /><path
+         d="m 317.13123,88.630052 -3.0555,13.431018 h 6.13299 z m -3.95676,-5.935148 h 7.93551 l 8.85876,32.819176 h -6.4847 l -2.02235,-8.11137 h -8.6829 l -1.97838,8.11137 h -6.4847 z"
+         id="text23"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         aria-label="A" /></g><g
        id="color_s3"
        class="fragment fade-in"><rect
          style="fill:#ffe792;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
@@ -503,51 +405,33 @@ hidden word.</li>
          width="45.958408"
          height="45.958408"
          x="352.39581"
-         y="76.14727" /><text
-         xml:space="preserve"
-         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-         x="361.82309"
-         y="115.51408"
-         id="text20"><tspan
-           sodipodi:role="line"
-           id="tspan20"
-           style="fill:#000000;stroke-width:2"
-           x="361.82309"
-           y="115.51408">S</tspan></text></g><g
+         y="76.14727" /><path
+         d="m 373.03393,101.11585 q -4.902,-1.868477 -6.63858,-3.912806 -1.73658,-2.06631 -1.73658,-5.539471 0,-4.462353 2.85767,-7.012268 2.85766,-2.549916 7.84758,-2.549916 2.26415,0 4.5283,0.527569 2.26415,0.505587 4.48433,1.51676 v 6.330825 q -2.08829,-1.472796 -4.24253,-2.242167 -2.15424,-0.769371 -4.26451,-0.769371 -2.35208,0 -3.60506,0.945227 -1.25297,0.945227 -1.25297,2.70379 0,1.362886 0.90126,2.264149 0.92325,0.879281 3.82488,1.956401 l 2.79171,1.055137 q 3.95677,1.450814 5.82524,3.846851 1.86847,2.39605 1.86847,6.04506 0,4.96794 -2.94559,7.42993 -2.92361,2.44001 -8.85876,2.44001 -2.44,0 -4.90199,-0.59352 -2.44001,-0.57153 -4.72614,-1.7146 v -6.70452 q 2.59388,1.84649 5.01191,2.74776 2.44,0.90126 4.81406,0.90126 2.39604,0 3.71496,-1.07712 1.31893,-1.0991 1.31893,-3.0555 0,-1.4728 -0.87928,-2.5719 -0.87929,-1.12108 -2.54992,-1.75856 z"
+         id="text20"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         aria-label="S" /></g><g
        id="g21"><rect
          style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
          id="rect21"
          width="45.958408"
          height="45.958408"
          x="468.86142"
-         y="76.14727" /><text
-         xml:space="preserve"
-         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-         x="478.2887"
-         y="115.53606"
-         id="text21"><tspan
-           sodipodi:role="line"
-           id="tspan21"
-           style="fill:#000000;stroke-width:2"
-           x="478.2887"
-           y="115.53606">Y</tspan></text></g><g
+         y="76.14727" /><path
+         d="m 478.46455,82.716884 h 6.99029 l 6.37479,13.189219 6.39677,-13.189219 h 6.99028 l -10.13371,19.893736 v 12.92544 h -6.4847 v -12.92544 z"
+         id="text21"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         aria-label="Y" /></g><g
        id="g14"><rect
          style="fill:#ffffff;stroke:#272822;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
          id="rect5"
          width="45.958408"
          height="45.958408"
          x="468.86142"
-         y="76.14727" /><text
-         xml:space="preserve"
-         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';fill:#000000;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
-         x="478.2887"
-         y="115.53606"
-         id="text10"><tspan
-           sodipodi:role="line"
-           id="tspan10"
-           style="fill:#000000;stroke-width:2"
-           x="478.2887"
-           y="115.53606">Y</tspan></text></g><path
+         y="76.14727" /><path
+         d="m 478.46455,82.716884 h 6.99029 l 6.37479,13.189219 6.39677,-13.189219 h 6.99028 l -10.13371,19.893736 v 12.92544 h -6.4847 v -12.92544 z"
+         id="text10"
+         style="font-weight:bold;font-size:45.0192px;font-family:'Meslo LG L';-inkscape-font-specification:'Meslo LG L, Bold';stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+         aria-label="Y" /></g><path
        style="fill:#f92672;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
        d="m 365.4561,99.456951 -12.7791,-15.40341 14.43141,-11.73617 9.76949,15.29764 13.08824,-14.626 9.63757,13.7116 -13.93864,12.68167 11.46953,17.313209 -10.34754,7.78934 -11.35746,-13.01871 -11.79942,12.43487 -9.50395,-8.17231 z"
        id="wrong"
@@ -557,38 +441,20 @@ hidden word.</li>
 </section>
 <section id="pseudocode-solution" class="slide level2">
 <h2>Pseudocode Solution</h2>
-<!--
-```{.python style='max-height:900px'}
-def color_squares():
-  #Define a variable to represent the as-yet-unmatched letters
-  for #each letter position in the word:
-    if #the letter in that position matches the hidden word:
-      #Color that square green
-      #Take that letter out of the unmatched collection
-  for #each letter position in the word:
-    if #the letter is in the unmatched collection:
-      #Color that square yellow
-      #Take that letter out of the unmatched collection
-```
--->
-<div class="CodeBox" style="width:1500px;">
-<span class="skeyword">def</span>
-<span class="funcname">color<span class="u">_</span>squares</span>():
-<span class="i">Define a variable to represent the as-yet-unmatched
-letters.</span> <span class="keyword">for</span><span class="i"> each
-letter position in the word:</span> <span class="keyword">if</span><span
-class="i"> the letter in that position matches the hidden word:</span>
-<span class="i">Color that square green.</span> <span class="i">Take
-that letter out of the unmatched set.</span> <span
-class="keyword">for</span><span class="i"> each letter position in the
-word:</span> <span class="keyword">if</span><span class="i"> the letter
-is in the unmatched set:</span> <span class="i">Color that square
-yellow.</span> <span class="i">Take that letter out of the unmatched
-set.</span>
-</div>
+<pre ><code class="mypython" style="max-height:900px">def color_squares():
+  |||Define a variable to represent the as-yet-unmatched letters|||
+  for |||each letter position in the word|||
+    if |||the letter in that position matches the hidden word:|||
+      |||Color that square green|||
+      |||Take that letter out of the unmatched collection|||
+  for |||each letter position in the word:|||
+    if |||the letter is in the unmatched collection:|||
+      |||Color that square yellow|||
+      |||Take that letter out of the unmatched collection|||</code></pre>
 </section>
 <section id="unmatched-tactics" class="slide level2">
 <h2>Unmatched Tactics</h2>
+<div style="font-size:.9em">
 <p>To implement the collection of unmatched letters:</p>
 <ul>
 <li>Create a variable called <code class="python">unmatched</code> that
@@ -604,10 +470,11 @@ some other non-alphabetic character</p></li>
 <li><p><code class="python">replace</code> will usually replace
 <strong>all</strong> the letters, which isn’t wanted here. So you can
 specify that you want it to only replace the first occurrence by
-including the index 1 as a third argument.</p>
+including the max count of 1 as a third argument.</p>
 <pre ><code class="python">unmatched = unmatched.replace(letter, "_", 1)</code></pre></li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="problem-3" class="slide level2">
 <h2>Problem 3</h2>
@@ -687,6 +554,7 @@ so just change the ones that you need to</li>
   <!--<script src="./js/revealjs/../other_plugins/reveald3/reveald3.js"></script>,-->
   <script src="./js/revealjs/plugin/math/math.js"></script>
   <script src="./js/revealjs/plugin/highlight/highlight.js"></script>
+  <script src="./js/revealjs/../python_language.js"></script>
 
   // Code Tracing
   <script src="./js/revealjs/../codetrace.js"></script>
@@ -799,6 +667,11 @@ so just change the ones that you need to</li>
 		  <!--},-->
 		  CommonHTML: {scale: 80},
 		},
+          highlight: {
+            beforeHighlight: hljs => hljs.registerLanguage("mypython", function(hljs) {
+              console.log(mypythondef);
+              return mypythondef(hljs); } )
+          },
         // reveal.js plugins
         plugins: [
 		  RevealMath,
@@ -837,5 +710,15 @@ so just change the ones that you need to</li>
 		],
       });
     </script>
+
+  
+  <script>
+  // This is admitedly a very hacky way to achieve my pseudo code highlighting, but it works?
+    var pseudoBlocks = document.getElementsByClassName("hljs-pseudo");
+    console.log(pseudoBlocks);
+    for ( var i = 0; i < pseudoBlocks.length; i++) {
+      pseudoBlocks[i].innerHTML = pseudoBlocks[i].innerHTML.replaceAll('\|\|\|', '');
+    }
+  </script>
     </body>
 </html>
