@@ -36,6 +36,11 @@
   <h1 class="title">Section 4 - Wordle</h1>
   <p class="author">Jed Rembold and Eric Roberts</p>
   <p class="date">Week of September 25</p>
+<div class="titlelinks">
+<a title="Template Repo" href="https://github.com/rembold-cs151-master/Section04"><i class="fa-solid fa-folder-tree"></i></a>
+<a title="Template Zip"  href="https://github.com/rembold-cs151-master/Section04/zipball/master/"><i class="fa-solid fa-file-zipper"></i></a>
+<a title="Questions"     href="https://github.com/rembold-cs151-master/Section04/raw/main/SectionQuestions.pdf"><i class="fa-solid fa-file-pdf"></i></a>
+</div>
 </section>
 
 <section id="problem-1" class="slide level2">
@@ -556,6 +561,9 @@ so just change the ones that you need to</li>
   <script src="./js/revealjs/plugin/highlight/highlight.js"></script>
   <script src="./js/revealjs/../python_language.js"></script>
 
+  // Font Awesome Characters
+  <script src="https://kit.fontawesome.com/4bc05635b0.js" crossorigin="anonymous"></script>
+
   // Code Tracing
   <script src="./js/revealjs/../codetrace.js"></script>
 
@@ -703,7 +711,9 @@ so just change the ones that you need to</li>
                   { color: 'rgba(208,135,112,0.5)',cursor: 'url(' + path + 'img/chalk-orange.png), auto'},
                   { color: 'rgba(180,142,173,0.5)',cursor: 'url(' + path + 'img/chalk-purple.png), auto'},
                   { color: 'rgba(235,203,139,0.5)',cursor: 'url(' + path + 'img/chalk-yellow.png), auto'}
-          ]
+          ],
+          toggleChalkboardButton: false,
+          toggleNotesButton: false
 		},
 		dependencies: [
             // { src: "./js/revealjs/plugin/title-footer/title-footer.js", async: true, callback: function() { title_footer.initialize({css:"./js/revealjs/plugin/title-footer/title-footer.css"}); } },
