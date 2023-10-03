@@ -16,8 +16,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -453,9 +456,12 @@ hidden word.</li>
       |||Color that square green|||
       |||Take that letter out of the unmatched collection|||
   for |||each letter position in the word:|||
-    if |||the letter is in the unmatched collection:|||
-      |||Color that square yellow|||
-      |||Take that letter out of the unmatched collection|||</code></pre>
+    if |||the square is not already colored|||
+      if |||the letter is in the unmatched collection:|||
+        |||Color that square yellow|||
+        |||Take that letter out of the unmatched collection|||
+      else:
+        |||Color that square gray|||</code></pre>
 </section>
 <section id="unmatched-tactics" class="slide level2">
 <h2>Unmatched Tactics</h2>
