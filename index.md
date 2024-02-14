@@ -102,11 +102,12 @@ def color_squares():
       |||Color that square green|||
       |||Take that letter out of the unmatched collection|||
   for |||each letter position in the word:|||
-    if |||the letter in that position is in the unmatched collection:|||
-      |||Color that square yellow|||
-      |||Take that letter out of the unmatched collection|||
-    else:
-      |||Color that square gray|||
+    if |||the square in that position is not already colored|||
+      if |||the letter in that position is in the unmatched collection:|||
+        |||Color that square yellow|||
+        |||Take that letter out of the unmatched collection|||
+      else:
+        |||Color that square gray|||
 ```
 
 
