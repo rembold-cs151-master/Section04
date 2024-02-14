@@ -1,7 +1,7 @@
 ---
 title: "Section 4 - Wordle"
 author: Jed Rembold and Eric Roberts
-date: Week of September 25
+date: Week of February 12
 slideNumber: true
 theme: monokai
 highlightjs-theme: monokai
@@ -43,7 +43,7 @@ content_url: https://github.com/rembold-cs151-master/Section04
 :::
 
 ## Password Key
-```{.python style='max-height:900px; font-size:.8em;'}
+```{.python style='max-height:800px; font-size:.8em;'}
 import random
 
 def generate_password(length, characters):
@@ -102,9 +102,11 @@ def color_squares():
       |||Color that square green|||
       |||Take that letter out of the unmatched collection|||
   for |||each letter position in the word:|||
-    if |||the letter is in the unmatched collection:|||
+    if |||the letter in that position is in the unmatched collection:|||
       |||Color that square yellow|||
       |||Take that letter out of the unmatched collection|||
+    else:
+      |||Color that square gray|||
 ```
 
 

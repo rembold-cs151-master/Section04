@@ -35,7 +35,7 @@
 <section id="title-slide">
   <h1 class="title">Section 4 - Wordle</h1>
   <p class="author">Jed Rembold and Eric Roberts</p>
-  <p class="date">Week of September 25</p>
+  <p class="date">Week of February 12</p>
 <div class="titlelinks">
 <a title="Template Repo" href="https://github.com/rembold-cs151-master/Section04"><i class="fa-solid fa-folder-tree"></i></a>
 <a title="Template Zip"  href="https://github.com/rembold-cs151-master/Section04/zipball/master/"><i class="fa-solid fa-file-zipper"></i></a>
@@ -85,7 +85,7 @@ symbols</li>
 </section>
 <section id="password-key" class="slide level2">
 <h2>Password Key</h2>
-<pre ><code class="python" style="max-height:900px; font-size:.8em;">import random
+<pre ><code class="python" style="max-height:800px; font-size:.8em;">import random
 
 def generate_password(length, characters):
   """
@@ -453,9 +453,11 @@ hidden word.</li>
       |||Color that square green|||
       |||Take that letter out of the unmatched collection|||
   for |||each letter position in the word:|||
-    if |||the letter is in the unmatched collection:|||
+    if |||the letter in that position is in the unmatched collection:|||
       |||Color that square yellow|||
-      |||Take that letter out of the unmatched collection|||</code></pre>
+      |||Take that letter out of the unmatched collection|||
+    else:
+      |||Color that square gray|||</code></pre>
 </section>
 <section id="unmatched-tactics" class="slide level2">
 <h2>Unmatched Tactics</h2>
