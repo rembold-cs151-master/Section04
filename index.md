@@ -1,7 +1,7 @@
 ---
 title: "Section 4 - Wordle"
 author: Jed Rembold and Eric Roberts
-date: Week of February 12
+date: Week of Sep 23
 slideNumber: true
 theme: monokai
 highlightjs-theme: monokai
@@ -43,7 +43,7 @@ content_url: https://github.com/rembold-cs151-master/Section04
 :::
 
 ## Password Key
-```{.python style='max-height:800px; font-size:.8em;'}
+```{.mypython style='max-height:800px; font-size:.8em;'}
 import random
 
 def generate_password(length, characters):
@@ -69,7 +69,7 @@ if __name__ == '__main__':
 ```
 
 ## Problem 2: Coloring
-- The most difficult part of the Wordle project is Milestone #3, in which you decide what color to apply to each of the squares in the guess.
+- The most difficult part of the Wordle project is Milestone #2, in which you decide what color to apply to each of the squares in the guess.
 - Here, your job is to work out the algorithm you need to determine what color each letter needs to be, but not write any actual code
 - The goal is to produce a detailed description of the algorithm in pseudocode or diagram form
 
@@ -94,7 +94,7 @@ if __name__ == '__main__':
 
 
 ## Pseudocode Solution
-```{.mypython style='max-height:900px'}
+```{.mypython style='max-height:900px' data-line-numbers=1-13|3-6|7-13}
 def color_squares():
   |||Define a variable to represent the as-yet-unmatched letters|||
   for |||each letter position in the word|||
@@ -145,9 +145,10 @@ gw.get_square_letter(4,3)
 
 ## Turn that frown...
 ::::::cols
-::::col
+::::{.col style='font-size:.9em'}
 - For the first part of this problem, add code to the existing template so that when the program is run, the Wordle squares immediately form a frowning face, as shown to the right
 - For the square color, you can just use the string `"black"` (or choose any other fun color!)
+- The `.set_square_color(row, col, color)` method will be most useful here!
 
 ::::
 

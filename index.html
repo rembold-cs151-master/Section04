@@ -16,8 +16,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -35,7 +38,7 @@
 <section id="title-slide">
   <h1 class="title">Section 4 - Wordle</h1>
   <p class="author">Jed Rembold and Eric Roberts</p>
-  <p class="date">Week of February 12</p>
+  <p class="date">Week of Sep 23</p>
 <div class="titlelinks">
 <a title="Template Repo" href="https://github.com/rembold-cs151-master/Section04"><i class="fa-solid fa-folder-tree"></i></a>
 <a title="Template Zip"  href="https://github.com/rembold-cs151-master/Section04/zipball/master/"><i class="fa-solid fa-file-zipper"></i></a>
@@ -85,7 +88,7 @@ symbols</li>
 </section>
 <section id="password-key" class="slide level2">
 <h2>Password Key</h2>
-<pre ><code class="python" style="max-height:800px; font-size:.8em;">import random
+<pre ><code class="mypython" style="max-height:800px; font-size:.8em;">import random
 
 def generate_password(length, characters):
   """
@@ -111,7 +114,7 @@ if __name__ == '__main__':
 <section id="problem-2-coloring" class="slide level2">
 <h2>Problem 2: Coloring</h2>
 <ul>
-<li>The most difficult part of the Wordle project is Milestone #3, in
+<li>The most difficult part of the Wordle project is Milestone #2, in
 which you decide what color to apply to each of the squares in the
 guess.</li>
 <li>Here, your job is to work out the algorithm you need to determine
@@ -446,7 +449,7 @@ hidden word.</li>
 </section>
 <section id="pseudocode-solution" class="slide level2">
 <h2>Pseudocode Solution</h2>
-<pre ><code class="mypython" style="max-height:900px">def color_squares():
+<pre ><code class="mypython" style="max-height:900px" data-line-numbers="1-13|3-6|7-13">def color_squares():
   |||Define a variable to represent the as-yet-unmatched letters|||
   for |||each letter position in the word|||
     if |||the letter in that position matches the hidden word:|||
@@ -506,7 +509,7 @@ gw.get_square_letter(4,3)</code></pre>
 <section id="turn-that-frown" class="slide level2">
 <h2>Turn that frown…</h2>
 <div class="cols">
-<div class="col">
+<div class="col" style="font-size:.9em">
 <ul>
 <li>For the first part of this problem, add code to the existing
 template so that when the program is run, the Wordle squares immediately
@@ -514,6 +517,8 @@ form a frowning face, as shown to the right</li>
 <li>For the square color, you can just use the string
 <code class="python">"black"</code> (or choose any other fun
 color!)</li>
+<li>The <code class="python">.set_square_color(row, col, color)</code>
+method will be most useful here!</li>
 </ul>
 </div>
 <div class="col">
