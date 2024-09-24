@@ -48,68 +48,66 @@
 
 <section id="problem-1" class="slide level2">
 <h2>Problem 1</h2>
+<div class="cols">
+<div class="col">
+<p><img data-src="./images/wordle_indices.png" /></p>
+</div>
+<div class="col">
 <ul>
-<li>Everyone has experienced the drama of being forced to generate a new
-password with certain characteristics</li>
-<li>Here, your goal is to make use of the random library to generate a
-password of an arbitrary length and using a selection of characters</li>
-<li>Write a function
-<code class="python">generate_password(length, chars)</code> which takes
-two arguments:
-<ul>
-<li>The length of the desired password as an integer</li>
-<li>The string of possible characters to generate the password from</li>
-</ul></li>
-<li>Your function should <em>return</em> the final password as a
-string</li>
+<li>Interacting with the <code class="python">WordleGWindow</code>
+object is mandatory in the Wordle project as a means to control or get
+information from the graphical window</li>
+<li>Displaying or reading information from the graphical squares
+generally requires referencing an index for both the column and row</li>
 </ul>
-</section>
-<section id="the-string-library" class="slide level2">
-<h2>The String Library</h2>
-<div style="font-size:.9em">
-<ul>
-<li><p>If you want an easy way to generate strings of different types,
-Python’s <code class="python">string</code> library can be
-useful</p></li>
-<li><p>It exports several useful constant strings that you can use:</p>
-<ul>
-<li><code class="python">ascii_letters</code>: All the lowercase and
-capital english letters</li>
-<li><code class="python">digits</code>: All the numeric digits</li>
-<li><code class="python">punctuation</code>: All the punctuation
-symbols</li>
-</ul></li>
-<li><p>You can thus produce a simple password:</p>
-<pre ><code class="python">generate_password(5, string.ascii_letters)</code></pre></li>
-<li><p>Or a more difficult password:</p>
-<pre ><code class="python">generate_password(15, string.ascii_letters + string.digits)</code></pre></li>
-</ul>
+<pre ><code class="python">gw.set_square_letter(0,1,"A")
+gw.get_square_letter(4,3)</code></pre>
+</div>
 </div>
 </section>
-<section id="password-key" class="slide level2">
-<h2>Password Key</h2>
-<pre ><code class="mypython" style="max-height:800px; font-size:.8em;">import random
-
-def generate_password(length, characters):
-  """
-  Generates a password of desired length from 
-  provided characters. 
-  """
-  password = ""
-  for i in range(length):
-    password += random.choice(characters)
-  return password
-
-
-if __name__ == '__main__':
-  import string
-
-  chars = string.ascii_letters
-  print(f"Simple password:  {generate_password(5, chars)}")
-  chars += string.digits
-  print(f"Medium password:  {generate_password(10, chars)}")
-  chars += string.punctuation
-  print(f"Complex password: {generate_password(15, chars)}")</code></pre>
+<section id="turn-that-frown" class="slide level2">
+<h2>Turn that frown…</h2>
+<div class="cols">
+<div class="col" style="font-size:.9em">
+<ul>
+<li>For the first part of this problem, add code to the existing
+template so that when the program is run, the Wordle squares immediately
+form a frowning face, as shown to the right</li>
+<li>For the square color, you can just use the string
+<code class="python">"black"</code> (or choose any other fun
+color!)</li>
+<li>The <code class="python">.set_square_color(row, col, color)</code>
+method will be most useful here!</li>
+</ul>
+</div>
+<div class="col">
+<figure>
+<img data-src="./images/wordle_sad.png" alt="Sad Wordle" />
+<figcaption aria-hidden="true">Sad Wordle</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="upside-down" class="slide level2">
+<h2>Upside Down!</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>Now add code to the <code class="python">enter_action()</code>
+function so that, then the <code class="python">Enter</code> or
+<code class="python">Return</code> key is pressed, the sad face turns
+into a smiley face</li>
+<li>You don’t need to change <strong>ALL</strong> of the squares here,
+so just change the ones that you need to</li>
+</ul>
+</div>
+<div class="col">
+<figure>
+<img data-src="./images/wordle_happy.png" alt="Happy Wordle!" />
+<figcaption aria-hidden="true">Happy Wordle!</figcaption>
+</figure>
+</div>
+</div>
 </section>
 <section id="problem-2-coloring" class="slide level2">
 <h2>Problem 2: Coloring</h2>
@@ -463,10 +461,11 @@ hidden word.</li>
       else:
         |||Color that square gray|||</code></pre>
 </section>
-<section id="unmatched-tactics" class="slide level2">
-<h2>Unmatched Tactics</h2>
+<section id="an-unmatched-strategy" class="slide level2">
+<h2>An Unmatched Strategy</h2>
 <div style="font-size:.9em">
-<p>To implement the collection of unmatched letters:</p>
+<p>One method to implement a collection of unmatched letters would be
+to:</p>
 <ul>
 <li>Create a variable called <code class="python">unmatched</code> that
 contains all the letters in the hidden word that have yet to be matched.
@@ -489,66 +488,68 @@ including the max count of 1 as a third argument.</p>
 </section>
 <section id="problem-3" class="slide level2">
 <h2>Problem 3</h2>
-<div class="cols">
-<div class="col">
-<p><img data-src="./images/wordle_indices.png" /></p>
-</div>
-<div class="col">
 <ul>
-<li>Interacting with the <code class="python">WordleGWindow</code>
-object is mandatory in the Wordle project as a means to control or get
-information from the graphical window</li>
-<li>Displaying or reading information from the graphical squares
-generally requires referencing an index for both the column and row</li>
+<li>Everyone has experienced the drama of being forced to generate a new
+password with certain characteristics</li>
+<li>Here, your goal is to make use of the random library to generate a
+password of an arbitrary length and using a selection of characters</li>
+<li>Write a function
+<code class="python">generate_password(length, chars)</code> which takes
+two arguments:
+<ul>
+<li>The length of the desired password as an integer</li>
+<li>The string of possible characters to generate the password from</li>
+</ul></li>
+<li>Your function should <em>return</em> the final password as a
+string</li>
 </ul>
-<pre ><code class="python">gw.set_square_letter(0,1,"A")
-gw.get_square_letter(4,3)</code></pre>
-</div>
+</section>
+<section id="the-string-library" class="slide level2">
+<h2>The String Library</h2>
+<div style="font-size:.9em">
+<ul>
+<li><p>If you want an easy way to generate strings of different types,
+Python’s <code class="python">string</code> library can be
+useful</p></li>
+<li><p>It exports several useful constant strings that you can use:</p>
+<ul>
+<li><code class="python">ascii_letters</code>: All the lowercase and
+capital english letters</li>
+<li><code class="python">digits</code>: All the numeric digits</li>
+<li><code class="python">punctuation</code>: All the punctuation
+symbols</li>
+</ul></li>
+<li><p>You can thus produce a simple password:</p>
+<pre ><code class="python">generate_password(5, string.ascii_letters)</code></pre></li>
+<li><p>Or a more difficult password:</p>
+<pre ><code class="python">generate_password(15, string.ascii_letters + string.digits)</code></pre></li>
+</ul>
 </div>
 </section>
-<section id="turn-that-frown" class="slide level2">
-<h2>Turn that frown…</h2>
-<div class="cols">
-<div class="col" style="font-size:.9em">
-<ul>
-<li>For the first part of this problem, add code to the existing
-template so that when the program is run, the Wordle squares immediately
-form a frowning face, as shown to the right</li>
-<li>For the square color, you can just use the string
-<code class="python">"black"</code> (or choose any other fun
-color!)</li>
-<li>The <code class="python">.set_square_color(row, col, color)</code>
-method will be most useful here!</li>
-</ul>
-</div>
-<div class="col">
-<figure>
-<img data-src="./images/wordle_sad.png" alt="Sad Wordle" />
-<figcaption aria-hidden="true">Sad Wordle</figcaption>
-</figure>
-</div>
-</div>
-</section>
-<section id="upside-down" class="slide level2">
-<h2>Upside Down!</h2>
-<div class="cols">
-<div class="col">
-<ul>
-<li>Now add code to the <code class="python">enter_action()</code>
-function so that, then the <code class="python">Enter</code> or
-<code class="python">Return</code> key is pressed, the sad face turns
-into a smiley face</li>
-<li>You don’t need to change <strong>ALL</strong> of the squares here,
-so just change the ones that you need to</li>
-</ul>
-</div>
-<div class="col">
-<figure>
-<img data-src="./images/wordle_happy.png" alt="Happy Wordle!" />
-<figcaption aria-hidden="true">Happy Wordle!</figcaption>
-</figure>
-</div>
-</div>
+<section id="password-key" class="slide level2">
+<h2>Password Key</h2>
+<pre ><code class="mypython" style="max-height:800px; font-size:.8em;">import random
+
+def generate_password(length, characters):
+  """
+  Generates a password of desired length from 
+  provided characters. 
+  """
+  password = ""
+  for i in range(length):
+    password += random.choice(characters)
+  return password
+
+
+if __name__ == '__main__':
+  import string
+
+  chars = string.ascii_letters
+  print(f"Simple password:  {generate_password(5, chars)}")
+  chars += string.digits
+  print(f"Medium password:  {generate_password(10, chars)}")
+  chars += string.punctuation
+  print(f"Complex password: {generate_password(15, chars)}")</code></pre>
 </section>
     </div>
   </div>
