@@ -1,7 +1,7 @@
 ---
 title: "Section 4 - Wordle"
 author: Jed Rembold and Eric Roberts
-date: Week of Feb 10th
+date: Week of September 22nd
 slideNumber: true
 theme: monokai
 highlightjs-theme: monokai
