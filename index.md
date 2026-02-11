@@ -1,10 +1,10 @@
 ---
 title: "Section 4 - Wordle"
 author: Jed Rembold and Eric Roberts
-date: Week of September 22nd
+date: Week of February 9th
 slideNumber: true
-theme: monokai
-highlightjs-theme: monokai
+theme: python_catppuccin
+highlightjs-theme: catppuccin-mocha
 width: 1920
 height: 1080
 transition: fade
@@ -25,7 +25,7 @@ content_url: https://github.com/rembold-cs151-master/Section04
 - Interacting with the `WordleGWindow` object is mandatory in the Wordle project as a means to control or get information from the graphical window
 - Displaying or reading information from the graphical squares generally requires referencing an index for both the column and row
 
-```python
+```{.python style='font-size:.85em'}
 gw.set_square_letter(0,1,"A")
 gw.get_square_letter(4,3)
 ```
